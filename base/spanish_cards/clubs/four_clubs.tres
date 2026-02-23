@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpanishCardResource" format=3 uid="uid://ctkuc1u24c27s"]
+
+[ext_resource type="Script" uid="uid://cfi1jv4shgftg" path="res://base/spanish_cards/spanish_card_resource.gd" id="1_6rro1"]
+[ext_resource type="Texture2D" uid="uid://ef2lnrt7x2vt" path="res://spanish_deck/34.PNG" id="2_c4alj"]
+
+[resource]
+script = ExtResource("1_6rro1")
+name = "Four of Clubs"
+texture = ExtResource("2_c4alj")
+card_suit = 0
+value = 4
+metadata/_custom_type_script = "uid://dox8s17eu2u0u"

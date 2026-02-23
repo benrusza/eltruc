@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpanishCardResource" format=3 uid="uid://casoucnop3p65"]
+
+[ext_resource type="Script" uid="uid://cfi1jv4shgftg" path="res://base/spanish_cards/spanish_card_resource.gd" id="1_vy3u4"]
+[ext_resource type="Texture2D" uid="uid://d4bnm7qavysqy" path="res://spanish_deck/19.PNG" id="2_sotxy"]
+
+[resource]
+script = ExtResource("1_vy3u4")
+name = "Horse of Cups"
+texture = ExtResource("2_sotxy")
+card_suit = 2
+value = 12
+metadata/_custom_type_script = "uid://dox8s17eu2u0u"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BalatroStyleResource" format=3 uid="uid://dyad7cfasumhn"]
+[gd_resource type="Resource" script_class="StandardCardResource" format=3 uid="uid://dyad7cfasumhn"]
 
 [ext_resource type="Script" uid="uid://dox8s17eu2u0u" path="res://base/cards/standard_deck/standard_card_resource.gd" id="1_27kq3"]
 [ext_resource type="Texture2D" uid="uid://d13a1tcqjxkas" path="res://base/cards/standard_deck/club.png" id="2_63tes"]

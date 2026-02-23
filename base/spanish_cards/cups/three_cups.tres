@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpanishCardResource" format=3 uid="uid://dvrmbiutnwcq8"]
+
+[ext_resource type="Script" uid="uid://cfi1jv4shgftg" path="res://base/spanish_cards/spanish_card_resource.gd" id="1_6u410"]
+[ext_resource type="Texture2D" uid="uid://0r3bpyhiijwx" path="res://spanish_deck/13.PNG" id="2_3bjcd"]
+
+[resource]
+script = ExtResource("1_6u410")
+name = "Three of Cups"
+texture = ExtResource("2_3bjcd")
+card_suit = 2
+value = 3
+metadata/_custom_type_script = "uid://dox8s17eu2u0u"

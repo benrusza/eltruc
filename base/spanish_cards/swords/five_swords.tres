@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpanishCardResource" format=3 uid="uid://bxg0qwj74vukw"]
+
+[ext_resource type="Script" uid="uid://cfi1jv4shgftg" path="res://base/spanish_cards/spanish_card_resource.gd" id="1_1wg4x"]
+[ext_resource type="Texture2D" uid="uid://dcrjt0vhxb6fs" path="res://spanish_deck/25.PNG" id="2_n1vb3"]
+
+[resource]
+script = ExtResource("1_1wg4x")
+name = "Five of Swords"
+texture = ExtResource("2_n1vb3")
+card_suit = 3
+value = 5
+metadata/_custom_type_script = "uid://dox8s17eu2u0u"

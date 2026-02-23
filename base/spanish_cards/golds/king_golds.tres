@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpanishCardResource" format=3 uid="uid://b8c0npe8gwvjl"]
+
+[ext_resource type="Script" uid="uid://cfi1jv4shgftg" path="res://base/spanish_cards/spanish_card_resource.gd" id="1_bu772"]
+[ext_resource type="Texture2D" uid="uid://bwyj85qrnefys" path="res://spanish_deck/10.PNG" id="2_bu772"]
+
+[resource]
+script = ExtResource("1_bu772")
+name = "King of Golds"
+texture = ExtResource("2_bu772")
+card_suit = 1
+value = 13
+metadata/_custom_type_script = "uid://dox8s17eu2u0u"

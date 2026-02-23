@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpanishCardResource" format=3 uid="uid://cf44uflnfquwe"]
+
+[ext_resource type="Script" uid="uid://cfi1jv4shgftg" path="res://base/spanish_cards/spanish_card_resource.gd" id="1_3ehyi"]
+[ext_resource type="Texture2D" uid="uid://ddcqyifjmwpm5" path="res://spanish_deck/8.PNG" id="2_4fcay"]
+
+[resource]
+script = ExtResource("1_3ehyi")
+name = "Jack of Golds"
+texture = ExtResource("2_4fcay")
+card_suit = 1
+value = 11
+metadata/_custom_type_script = "uid://dox8s17eu2u0u"

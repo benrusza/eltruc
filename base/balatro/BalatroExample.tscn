@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bmc1k8rf2430l" path="res://base/balatro/balatro_example.gd" id="1_ieake"]
 [ext_resource type="Script" uid="uid://f3ybsxom5cmo" path="res://base/balatro/balatro_card_hand.gd" id="2_grswf"]
 [ext_resource type="Script" uid="uid://bisyk4bowdvsf" path="res://addons/simple_cards/deck/manager/card_deck_manager.gd" id="3_hg8is"]
-[ext_resource type="Resource" uid="uid://u1x8i453q018" path="res://base/cards/standard_deck/standard_deck.tres" id="4_2a7na"]
+[ext_resource type="Resource" uid="uid://c622verlvs7jk" path="res://base/spanish_cards/spanish_deck.tres" id="4_463nj"]
 [ext_resource type="Script" uid="uid://d2l8uaoel5whd" path="res://addons/simple_cards/pile/card_pile.gd" id="4_oq12x"]
 [ext_resource type="Script" uid="uid://b1s6x4iyt2pps" path="res://addons/simple_cards/hand/shape/premade_shapes/line_shape.gd" id="5_frvav"]
 [ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/hand/card_hand.gd" id="5_gjekf"]
@@ -47,13 +47,13 @@ metadata/_custom_type_script = "uid://qd3kangeiqg"
 
 [node name="BalatroExample" type="CanvasLayer" unique_id=813210464]
 script = ExtResource("1_ieake")
-deck = ExtResource("4_2a7na")
+deck = ExtResource("4_463nj")
 use_stagger_draw = false
 
 [node name="CardDeckManager" type="Node" parent="." unique_id=1532482660 node_paths=PackedStringArray("starting_pile")]
 physics_interpolation_mode = 2
 script = ExtResource("3_hg8is")
-deck = ExtResource("4_2a7na")
+deck = ExtResource("4_463nj")
 starting_pile = NodePath("../MarginContainer/Draw")
 metadata/_custom_type_script = "uid://bisyk4bowdvsf"
 

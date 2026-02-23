@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpanishCardResource" format=3 uid="uid://cwfthsb7w3fb6"]
+
+[ext_resource type="Script" uid="uid://cfi1jv4shgftg" path="res://base/spanish_cards/spanish_card_resource.gd" id="1_6i4p3"]
+[ext_resource type="Texture2D" uid="uid://dvtpdl3tfam0w" path="res://spanish_deck/1.PNG" id="2_aid71"]
+
+[resource]
+script = ExtResource("1_6i4p3")
+name = "Ace of Golds"
+texture = ExtResource("2_aid71")
+card_suit = 1
+metadata/_custom_type_script = "uid://dox8s17eu2u0u"

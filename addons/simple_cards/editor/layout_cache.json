@@ -13,7 +13,7 @@
 	},
 	"res://base/cards/standard_deck/standard_back_layout.tscn": {
 		"enabled": true,
-		"last_modified": 1771692212,
+		"last_modified": 1771844621,
 		"layout_id": "standard_back_layout",
 		"tags": [
 			"back"
@@ -27,12 +27,18 @@
 			"front"
 		]
 	},
-	"res://my_custom_layout.tscn": {
+	"res://base/spanish_cards/spanish_back_layout.tscn": {
 		"enabled": true,
-		"last_modified": 1771693785,
-		"layout_id": "my_custom_layout",
+		"last_modified": 1771847692,
+		"layout_id": "spanish_layout_back",
+		"tags": []
+	},
+	"res://base/spanish_cards/spanish_layout_1.tscn": {
+		"enabled": true,
+		"last_modified": 1771847869,
+		"layout_id": "spanish_layout",
 		"tags": [
-			"truc"
+			"spanish_layout"
 		]
 	}
 }

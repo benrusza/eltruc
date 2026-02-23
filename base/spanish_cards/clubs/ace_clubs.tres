@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpanishCardResource" format=3 uid="uid://rnp1dij1phfs"]
+
+[ext_resource type="Script" uid="uid://cfi1jv4shgftg" path="res://base/spanish_cards/spanish_card_resource.gd" id="1_nfdxr"]
+[ext_resource type="Texture2D" uid="uid://cktroh6yxlrmk" path="res://spanish_deck/31.PNG" id="2_a0yxm"]
+
+[resource]
+script = ExtResource("1_nfdxr")
+name = "Ace of Clubs"
+texture = ExtResource("2_a0yxm")
+card_suit = 0
+metadata/_custom_type_script = "uid://dox8s17eu2u0u"

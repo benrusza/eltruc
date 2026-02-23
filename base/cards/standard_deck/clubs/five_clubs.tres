@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="BalatroStyleResource" format=3 uid="uid://kybsv045csgd"]
+[gd_resource type="Resource" script_class="StandardCardResource" format=3 uid="uid://kybsv045csgd"]
 
 [ext_resource type="Script" uid="uid://dox8s17eu2u0u" path="res://base/cards/standard_deck/standard_card_resource.gd" id="1_esa5r"]
 [ext_resource type="Texture2D" uid="uid://d13a1tcqjxkas" path="res://base/cards/standard_deck/club.png" id="2_qkcq6"]
 
 [resource]
 script = ExtResource("1_esa5r")
-name = "Ace of Clubs"
+name = "Ace of Golds"
 top_texture = ExtResource("2_qkcq6")
 card_suit = 0
 value = 5

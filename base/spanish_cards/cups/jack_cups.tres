@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpanishCardResource" format=3 uid="uid://b131654cr7875"]
+
+[ext_resource type="Script" uid="uid://cfi1jv4shgftg" path="res://base/spanish_cards/spanish_card_resource.gd" id="1_gmq1v"]
+[ext_resource type="Texture2D" uid="uid://bj2lr5fygrxg3" path="res://spanish_deck/18.PNG" id="2_wj443"]
+
+[resource]
+script = ExtResource("1_gmq1v")
+name = "Jack of Cups"
+texture = ExtResource("2_wj443")
+card_suit = 2
+value = 11
+metadata/_custom_type_script = "uid://dox8s17eu2u0u"
