@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://brvun6l03k0hu"]
 
-[ext_resource type="Script" uid="uid://bmc1k8rf2430l" path="res://base/balatro/balatro_example.gd" id="1_ieake"]
-[ext_resource type="Script" uid="uid://f3ybsxom5cmo" path="res://base/balatro/balatro_card_hand.gd" id="2_grswf"]
-[ext_resource type="Script" uid="uid://bisyk4bowdvsf" path="res://addons/simple_cards/deck/manager/card_deck_manager.gd" id="3_hg8is"]
-[ext_resource type="Resource" uid="uid://c622verlvs7jk" path="res://base/spanish_cards/spanish_deck.tres" id="4_463nj"]
-[ext_resource type="Script" uid="uid://d2l8uaoel5whd" path="res://addons/simple_cards/pile/card_pile.gd" id="4_oq12x"]
-[ext_resource type="Script" uid="uid://b1s6x4iyt2pps" path="res://addons/simple_cards/hand/shape/premade_shapes/line_shape.gd" id="5_frvav"]
-[ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/hand/card_hand.gd" id="5_gjekf"]
-[ext_resource type="Script" uid="uid://cgtxv1fnflwfu" path="res://addons/simple_cards/hand/shape/premade_shapes/arc_shape.gd" id="7_m6hid"]
-[ext_resource type="Script" uid="uid://cle02hultetj5" path="res://addons/simple_cards/hand/shape/premade_shapes/stack_shape.gd" id="7_oq12x"]
-[ext_resource type="Script" uid="uid://qd3kangeiqg" path="res://addons/simple_cards/hand/shape/premade_shapes/grid_shape.gd" id="10_w7u2t"]
+[ext_resource type="Script" uid="uid://bmc1k8rf2430l" path="res://base/balatro/kartas.gd" id="1_itsbb"]
+[ext_resource type="Resource" uid="uid://c622verlvs7jk" path="res://base/spanish_cards/spanish_deck.tres" id="2_rdupq"]
+[ext_resource type="Script" uid="uid://bisyk4bowdvsf" path="res://addons/simple_cards/deck/manager/card_deck_manager.gd" id="3_05s0h"]
+[ext_resource type="Script" uid="uid://f3ybsxom5cmo" path="res://base/balatro/balatro_card_hand.gd" id="4_nx5jh"]
+[ext_resource type="Script" uid="uid://cgtxv1fnflwfu" path="res://addons/simple_cards/hand/shape/premade_shapes/arc_shape.gd" id="5_5jk62"]
+[ext_resource type="Script" uid="uid://d2l8uaoel5whd" path="res://addons/simple_cards/pile/card_pile.gd" id="6_m7y0m"]
+[ext_resource type="Script" uid="uid://cle02hultetj5" path="res://addons/simple_cards/hand/shape/premade_shapes/stack_shape.gd" id="7_17jkb"]
+[ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/hand/card_hand.gd" id="8_w1hpb"]
+[ext_resource type="Script" uid="uid://b1s6x4iyt2pps" path="res://addons/simple_cards/hand/shape/premade_shapes/line_shape.gd" id="9_pr677"]
+[ext_resource type="Script" uid="uid://qd3kangeiqg" path="res://addons/simple_cards/hand/shape/premade_shapes/grid_shape.gd" id="10_dbel8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6hid"]
 bg_color = Color(0.16078432, 0.2784314, 0.20784314, 1)
@@ -20,40 +20,41 @@ border_width_bottom = 16
 border_color = Color(0.32156864, 0.19607843, 0.19215687, 1)
 
 [sub_resource type="Resource" id="Resource_frvav"]
-script = ExtResource("7_m6hid")
-card_spacing = 70.0
+script = ExtResource("5_5jk62")
+arc_angle = 64.0
+arc_orientation = 269.0
+card_spacing = 100.0
 metadata/_custom_type_script = "uid://cgtxv1fnflwfu"
 
 [sub_resource type="Resource" id="Resource_w7u2t"]
-script = ExtResource("7_oq12x")
+script = ExtResource("7_17jkb")
 metadata/_custom_type_script = "uid://cle02hultetj5"
 
 [sub_resource type="Resource" id="Resource_asqof"]
-script = ExtResource("7_oq12x")
+script = ExtResource("7_17jkb")
 metadata/_custom_type_script = "uid://cle02hultetj5"
 
-[sub_resource type="Resource" id="Resource_m6hid"]
-script = ExtResource("5_frvav")
-card_spacing = 90.0
-metadata/_custom_type_script = "uid://b1s6x4iyt2pps"
-
 [sub_resource type="Resource" id="Resource_gmp31"]
-script = ExtResource("10_w7u2t")
-num_of_cols = 13
-num_of_rows = 4
-col_offset = 85.0
-row_offset = 117.0
+script = ExtResource("10_dbel8")
+num_of_cols = 9
+num_of_rows = 5
+col_offset = 100.0
 metadata/_custom_type_script = "uid://qd3kangeiqg"
 
-[node name="BalatroExample" type="CanvasLayer" unique_id=813210464]
-script = ExtResource("1_ieake")
-deck = ExtResource("4_463nj")
+[sub_resource type="Resource" id="Resource_m6hid"]
+script = ExtResource("9_pr677")
+card_spacing = 120.0
+metadata/_custom_type_script = "uid://b1s6x4iyt2pps"
+
+[node name="Kartas" type="CanvasLayer" unique_id=813210464]
+script = ExtResource("1_itsbb")
+deck = ExtResource("2_rdupq")
 use_stagger_draw = false
 
 [node name="CardDeckManager" type="Node" parent="." unique_id=1532482660 node_paths=PackedStringArray("starting_pile")]
 physics_interpolation_mode = 2
-script = ExtResource("3_hg8is")
-deck = ExtResource("4_463nj")
+script = ExtResource("3_05s0h")
+deck = ExtResource("2_rdupq")
 starting_pile = NodePath("../MarginContainer/Draw")
 metadata/_custom_type_script = "uid://bisyk4bowdvsf"
 
@@ -99,6 +100,35 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 text = "None"
 
+[node name="VBoxContainerPoints" type="VBoxContainer" parent="MarginContainer" unique_id=305970188]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainerPoints" unique_id=399608786]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainerPoints/HBoxContainer" unique_id=289348109]
+layout_mode = 2
+text = "Goal:"
+
+[node name="LabelGoalPoints" type="Label" parent="MarginContainer/VBoxContainerPoints/HBoxContainer" unique_id=1406697963]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainerPoints" unique_id=759482904]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainerPoints/HBoxContainer2" unique_id=1452134333]
+layout_mode = 2
+text = "Points:"
+
+[node name="LabelPoints" type="Label" parent="MarginContainer/VBoxContainerPoints/HBoxContainer2" unique_id=131978448]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=340012948]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -127,7 +157,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-script = ExtResource("2_grswf")
+script = ExtResource("4_nx5jh")
 shape = SubResource("Resource_frvav")
 max_hand_size = 7
 metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
@@ -140,13 +170,13 @@ theme_override_constants/separation = 8
 
 [node name="SortSuitButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1200753204]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 64)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 text = "Sort by Suit"
 
 [node name="SortValueButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=791883421]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 64)
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 text = "Sort by Value"
 
@@ -155,7 +185,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-script = ExtResource("4_oq12x")
+script = ExtResource("6_m7y0m")
 shape = SubResource("Resource_w7u2t")
 show_cards = true
 metadata/_custom_type_script = "uid://d2l8uaoel5whd"
@@ -165,28 +195,18 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-script = ExtResource("4_oq12x")
+script = ExtResource("6_m7y0m")
 shape = SubResource("Resource_asqof")
 show_cards = true
 face_up = true
 metadata/_custom_type_script = "uid://d2l8uaoel5whd"
-
-[node name="PlayedHand" type="Control" parent="MarginContainer" unique_id=941636721]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("5_gjekf")
-shape = SubResource("Resource_m6hid")
-enable_reordering = false
-metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
 
 [node name="PreviewHand" type="Control" parent="MarginContainer" unique_id=93564434]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("5_gjekf")
+script = ExtResource("8_w1hpb")
 shape = SubResource("Resource_gmp31")
 metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
 
@@ -209,3 +229,22 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Preview
 Discard"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer" unique_id=1032502935]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PlayedHand" type="Control" parent="MarginContainer/VBoxContainer3" unique_id=941636721]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("8_w1hpb")
+shape = SubResource("Resource_m6hid")
+enable_reordering = false
+metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
+
+[node name="Container" type="Container" parent="MarginContainer/VBoxContainer3" unique_id=1802910964]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2

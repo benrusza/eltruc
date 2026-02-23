@@ -1,4 +1,4 @@
-## Balatro-style card game example.
+## Based on Balatro-style card game example.
 ##
 ## Shows off: drawing from a deck, selecting and playing cards, discarding,
 ## applying visual modifiers (Gold/Steel), sorting, and previewing pile contents.
@@ -9,10 +9,14 @@
 ## - Discard (CardPile): the discard pile
 ## - BalatroHand: player's hand (arc shape, max 7, click to select)
 ## - PlayedHand: staging area for played cards (line shape)
+
 extends CanvasLayer
 
 @export var deck: CardDeck
 @export var use_stagger_draw: bool = true
+# ----
+@export var goal_points: int = 1000
+var current_points: int = 0
 
 @onready var card_deck_manager: CardDeckManager = $CardDeckManager
 @onready var played_hand: CardHand = %PlayedHand
@@ -35,6 +39,11 @@ extends CanvasLayer
 @onready var preview_hand: CardHand = %PreviewHand
 @onready var preview_draw: Button = %PreviewDraw
 @onready var preview_discard: Button = %PreviewDiscard
+# ----
+@onready var label_goal_points: Label = %LabelGoalPoints
+@onready var label_points: Label = %LabelPoints
+
+
 var preview_visible: bool = false
 var current_preview_pile: CardPile
 
@@ -51,6 +60,10 @@ func _ready() -> void:
 	sort_value_button.pressed.connect(_on_sort_value_pressed)
 	preview_draw.pressed.connect(_on_preview_draw_pressed)
 	preview_discard.pressed.connect(_on_preview_discard_pressed)
+	
+	# ----
+	label_goal_points.text = str(goal_points)
+	# ----
 
 	CG.def_front_layout = LayoutID.SPANISH_LAYOUT
 	CG.def_back_layout = LayoutID.SPANISH_LAYOUT_BACK
@@ -109,7 +122,94 @@ func _on_play_button() -> void:
 	balatro_hand.clear_selected()
 	staggered_draw(cards_to_play, played_hand)
 	
-	await get_tree().create_timer(2).timeout ## Replace with VFX/Logic
+	#await get_tree().create_timer(2).timeout ## Replace with VFX/Logic
+	var cards_by_suit = {}
+	var cards_by_value = {}
+	var points = 0
+	for card in played_hand.cards.duplicate():
+		if cards_by_suit.has(card.card_data.card_suit):
+			cards_by_suit[card.card_data.card_suit].append(card)
+		else:
+			cards_by_suit[card.card_data.card_suit] = [card]
+		
+		if cards_by_value.has(card.card_data.value):
+			cards_by_value[card.card_data.value].append(card)
+		else:
+			cards_by_value[card.card_data.value] = [card]
+					
+
+	var id_bigger_cards_by_suit = cards_by_suit.keys()[0]
+	for cards in cards_by_suit.duplicate():
+		if cards_by_suit[cards].size() > cards_by_suit[id_bigger_cards_by_suit].size():
+			id_bigger_cards_by_suit = cards
+			
+	
+	var id_bigger_cards_by_value = cards_by_value.keys()[0]
+	for cards in cards_by_value.duplicate():
+		if cards_by_value[cards].size() > cards_by_value[id_bigger_cards_by_value].size():
+			id_bigger_cards_by_value = cards
+			
+
+	var straight = has_straight(played_hand.cards)
+	var multiplier = 1
+			
+			
+	if cards_by_suit[id_bigger_cards_by_suit].size()==5:
+		if straight:
+			print("escalera de color*5")
+			for card in played_hand.cards:
+				points+= card.card_data.value
+			multiplier = 5
+		else:
+			print("5 cartas de color *3")
+			for card in played_hand.cards:
+				points+= card.card_data.value
+			multiplier = 3
+		pass
+	elif cards_by_value[id_bigger_cards_by_value].size()==4:
+		print("poker*4")
+		multiplier = 5
+		for card in played_hand.cards:
+			points+= card.card_data.value
+	elif straight:
+		for card in played_hand.cards:
+			points+= card.card_data.value
+		print("escalera* 3")
+		multiplier = 4
+	elif cards_by_value[id_bigger_cards_by_value].size()==3:
+		print("trio * 3")
+		multiplier = 3
+		for card in cards_by_value[id_bigger_cards_by_value].values():
+			points+= card.card_data.value
+		# hay full?no
+	elif cards_by_value[id_bigger_cards_by_value].size()==2:
+		print("pareja * 2")
+		multiplier = 2
+		# hay doble pareja?
+		for card in cards_by_value.values():
+			if card.size()==2:
+				for c in card:
+					points+= c.card_data.value
+		
+			
+	elif cards_by_value[id_bigger_cards_by_value].size()==1:
+		print("carta alta * 1")
+		multiplier = 1
+		# conseguir carta mas alta
+		var bigger = played_hand.cards[0]
+		for card in played_hand.cards.duplicate():
+			if card.card_data.value > bigger.card_data.value:
+				bigger = card
+		points = bigger.card_data.value
+		
+	print("points "+str(points))
+	points*=multiplier
+	
+	current_points+=points
+	
+	#points+=card.card_data.value
+	await get_tree().create_timer(2).timeout
+	label_points.text = str(current_points)
 	
 	for card in played_hand.cards.duplicate():
 		discard.add_card(card)
@@ -117,6 +217,23 @@ func _on_play_button() -> void:
 	played_hand.clear_hand()
 	deal()
 	_set_interaction_enabled(true)
+	
+func has_straight(cards):
+	# Sort the cards by value
+	cards.sort_custom(Callable(self, "_sort_cards_by_value"))
+
+	# Check if the cards have consecutive values
+	var previous_value = cards[0].card_data.value - 1
+	for card in cards:
+		if card.card_data.value != previous_value + 1:
+			return false
+		previous_value = card.card_data.value
+
+	return true
+
+func _sort_cards_by_value(a, b):
+	return a.card_data.value < b.card_data.value
+
 
 #endregion
 

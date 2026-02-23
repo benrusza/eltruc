@@ -8,5 +8,5 @@ script = ExtResource("1_0hejg")
 name = "King of Swords"
 texture = ExtResource("2_jumd7")
 card_suit = 3
-value = 13
+value = 12
 metadata/_custom_type_script = "uid://dox8s17eu2u0u"

@@ -29,16 +29,16 @@
 	},
 	"res://base/spanish_cards/spanish_back_layout.tscn": {
 		"enabled": true,
-		"last_modified": 1771847692,
+		"last_modified": 1771858827,
 		"layout_id": "spanish_layout_back",
 		"tags": []
 	},
 	"res://base/spanish_cards/spanish_layout_1.tscn": {
 		"enabled": true,
-		"last_modified": 1771847869,
+		"last_modified": 1771868823,
 		"layout_id": "spanish_layout",
 		"tags": [
-			"spanish_layout"
+			"front"
 		]
 	}
 }

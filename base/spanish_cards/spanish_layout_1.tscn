@@ -19,9 +19,10 @@ corner_detail = 16
 [node name="CardLayout" type="SubViewportContainer" unique_id=1445274384]
 offset_right = 80.0
 offset_bottom = 112.0
+scale = Vector2(1.4, 1.4)
 script = ExtResource("1_ce065")
 metadata/is_layout = true
-metadata/layout_id = "standard_layout"
+metadata/layout_id = "spanish_layout"
 metadata/tags = ["front"]
 metadata/_custom_type_script = "uid://dm115oleoggyt"
 

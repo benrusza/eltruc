@@ -19,6 +19,7 @@ corner_detail = 16
 [node name="CardLayout" type="SubViewportContainer" unique_id=1194332146]
 offset_right = 80.0
 offset_bottom = 112.0
+scale = Vector2(1.4, 1.4)
 script = ExtResource("1_0a68r")
 metadata/is_layout = true
 metadata/layout_id = "spanish_layout_back"
@@ -39,6 +40,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0a68r")
 
 [node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=753930002]
-position = Vector2(40.249996, 56)
-scale = Vector2(1.089041, 1)
+position = Vector2(40.607147, 55.82143)
+scale = Vector2(1.0988259, 0.9968395)
 texture = ExtResource("3_es1wl")
