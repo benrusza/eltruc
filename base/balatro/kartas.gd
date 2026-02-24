@@ -43,6 +43,14 @@ var current_points: int = 0
 @onready var label_goal_points: Label = %LabelGoalPoints
 @onready var label_points: Label = %LabelPoints
 
+@onready var label_multiplier_name: Label = %LabelMultiplierName
+@onready var label_multiplier: Label = %LabelMultiplier
+@onready var label_hand_points: Label = %LabelHandPoints
+
+@onready var label_discards: Label = %LabelDiscards
+@onready var label_plays: Label = %LabelPlays
+var plays = 3
+var discards = 3
 
 var preview_visible: bool = false
 var current_preview_pile: CardPile
@@ -63,6 +71,8 @@ func _ready() -> void:
 	
 	# ----
 	label_goal_points.text = str(goal_points)
+	label_discards.text = str(discards)
+	label_plays.text = str(plays)
 	# ----
 
 	CG.def_front_layout = LayoutID.SPANISH_LAYOUT
@@ -100,6 +110,12 @@ func _on_none_pressed() -> void:
 #region Play and Discard
 
 func _on_discard_pressed() -> void:
+	if discards<=0:
+		return
+		
+	discards-=1
+	label_discards.text=str(discards)
+	
 	if balatro_hand.selected.is_empty():
 		return
 	
@@ -114,6 +130,11 @@ func _on_discard_pressed() -> void:
 func _on_play_button() -> void:
 	if balatro_hand.selected.is_empty():
 		return
+		
+	if plays<=0:
+		return
+	plays-=1
+	label_plays.text=str(plays)
 	
 	_set_interaction_enabled(false)
 	
@@ -157,17 +178,20 @@ func _on_play_button() -> void:
 	if cards_by_suit[id_bigger_cards_by_suit].size()==5:
 		if straight:
 			print("escalera de color*5")
+			label_multiplier_name.text = "Escalera de color"
 			for card in played_hand.cards:
 				points+= card.card_data.value
 			multiplier = 5
 		else:
 			print("5 cartas de color *3")
+			label_multiplier_name.text = "Color"
 			for card in played_hand.cards:
 				points+= card.card_data.value
 			multiplier = 3
 		pass
 	elif cards_by_value[id_bigger_cards_by_value].size()==4:
 		print("poker*4")
+		label_multiplier_name.text = "Poker"
 		multiplier = 5
 		for card in played_hand.cards:
 			points+= card.card_data.value
@@ -175,25 +199,30 @@ func _on_play_button() -> void:
 		for card in played_hand.cards:
 			points+= card.card_data.value
 		print("escalera* 3")
+		label_multiplier_name.text = "Escalera"
 		multiplier = 4
 	elif cards_by_value[id_bigger_cards_by_value].size()==3:
 		print("trio * 3")
+		label_multiplier_name.text = "Trio"
 		multiplier = 3
 		for card in cards_by_value[id_bigger_cards_by_value].values():
 			points+= card.card_data.value
 		# hay full?no
 	elif cards_by_value[id_bigger_cards_by_value].size()==2:
-		print("pareja * 2")
-		multiplier = 2
+			
 		# hay doble pareja?
 		for card in cards_by_value.values():
 			if card.size()==2:
 				for c in card:
+					multiplier+=1
 					points+= c.card_data.value
-		
+		if multiplier == 3:
+			label_multiplier_name.text = "Doble pareja"
+		else:
+			label_multiplier_name.text = "Pareja"
 			
 	elif cards_by_value[id_bigger_cards_by_value].size()==1:
-		print("carta alta * 1")
+		label_multiplier_name.text = "Carta alta"
 		multiplier = 1
 		# conseguir carta mas alta
 		var bigger = played_hand.cards[0]
@@ -202,19 +231,28 @@ func _on_play_button() -> void:
 				bigger = card
 		points = bigger.card_data.value
 		
-	print("points "+str(points))
+
+	label_hand_points.text = str(points)
+	label_multiplier.text = "x"+str(multiplier)
 	points*=multiplier
 	
 	current_points+=points
 	
 	#points+=card.card_data.value
 	await get_tree().create_timer(2).timeout
+	label_hand_points.text = ""
+	label_multiplier.text = ""
 	label_points.text = str(current_points)
 	
 	for card in played_hand.cards.duplicate():
 		discard.add_card(card)
 	
 	played_hand.clear_hand()
+	
+	if plays==0:
+		#end game
+		pass
+	
 	deal()
 	_set_interaction_enabled(true)
 	
@@ -328,13 +366,15 @@ func _set_interaction_enabled(enabled: bool) -> void:
 #region Preview Functions
 
 func _on_preview_discard_pressed() -> void:
+
+		
 	if preview_visible and current_preview_pile == discard:
 		_close_preview()
 		return
 
 	if discard.is_empty():
 		return
-
+			
 	_show_preview(discard)
 
 
