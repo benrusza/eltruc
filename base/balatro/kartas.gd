@@ -205,8 +205,8 @@ func _on_play_button() -> void:
 		print("trio * 3")
 		label_multiplier_name.text = "Trio"
 		multiplier = 3
-		for card in cards_by_value[id_bigger_cards_by_value].values():
-			points+= card.card_data.value
+		for card in cards_by_value[id_bigger_cards_by_value]:
+			points += card.card_data.value
 		# hay full?no
 	elif cards_by_value[id_bigger_cards_by_value].size()==2:
 			
@@ -237,7 +237,7 @@ func _on_play_button() -> void:
 	points*=multiplier
 	
 	current_points+=points
-	
+	Global.points = current_points
 	#points+=card.card_data.value
 	await get_tree().create_timer(2).timeout
 	label_hand_points.text = ""
@@ -250,8 +250,13 @@ func _on_play_button() -> void:
 	played_hand.clear_hand()
 	
 	if plays==0:
-		#end game
-		pass
+		if goal_points <= points:
+			#next
+			pass
+		else:
+			#gameover
+			get_tree().change_scene_to_file("res://base/gameover.tscn")
+			pass
 	
 	deal()
 	_set_interaction_enabled(true)
